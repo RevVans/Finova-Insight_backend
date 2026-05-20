@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asset_histories', function (Blueprint $table) {
+        Schema::create('savings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('target_amount', 15,2);
+            $table->decimal('current_amount',15,2);
+            $table->date('deadline_date');
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asset_histories');
+        Schema::dropIfExists('saving_goals');
     }
 };

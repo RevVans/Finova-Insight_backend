@@ -27,9 +27,15 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            // Error jir
+            // 'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+
+            'role' => 'user', 
+            'kyc_status' => fake()->boolean(70), // 70% chance of being true
+            'id_document_path' => null,
+            'verified_at' => fake()->optional()->dateTime(), // Randomly assigns a date or null
         ];
     }
 

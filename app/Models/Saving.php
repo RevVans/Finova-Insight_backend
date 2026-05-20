@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SavingHistory extends Model
+class Saving extends Model
 {
-    const UPDATED_AT = null;
+    use HasFactory;
 
     protected $fillable = [
-        'amount',
-        'date',
         'user_id',
-        'saving_id',
+        'name',
+        'target_amount',
+        'current_amount',
+        'deadline_date',
     ];
-
-    public function savingGoal()
-    {
-        return $this->belongsTo(Saving::class);
-    }
 
     public function user()
     {
